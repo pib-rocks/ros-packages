@@ -1,3 +1,6 @@
 [submodule "voice-assistant"]
 	path = voice-assistant
 	url = https://github.com/pib-rocks/voice-assistant.git
+[submodule "motors"]
+	path = motors
+	url = https://github.com/pib-rocks/motors.git
