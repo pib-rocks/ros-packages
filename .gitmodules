@@ -4,3 +4,6 @@
 [submodule "motors"]
 	path = motors
 	url = https://github.com/pib-rocks/motors.git
+[submodule "datatypes"]
+	path = datatypes
+	url = https://github.com/pib-rocks/datatypes.git
