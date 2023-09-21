@@ -30,11 +30,11 @@ rm -r $ROS_WORKING_DIR/voice-assistant-PR-312
 # build all packages
 cd $ROS_WORKING_DIR
 sudo colcon build
-sudo source install/setup.bash
+source install/setup.bash
 #
 # Boot voice-assistant
-sudo chmod 777 $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.sh
-sudo chmod 777 $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.service
+sudo chmod 755 $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.sh
+sudo chmod 755 $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.service
 sudo mv $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.service /etc/systemd/system
 sudo systemctl enable ros_voice_assistant_boot.service
 echo "source /home/pib/ros_working_dir/install/setup.bash" >> ~/.bashrc
