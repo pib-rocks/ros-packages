@@ -63,7 +63,4 @@ sudo systemctl enable ros_voice_assistant_boot.service
 #
 echo "source /home/pib/ros_working_dir/install/setup.bash" >> ~/.bashrc
 #
-# run all Nodes
-ros2 run voice_assistant assistant
-#
 echo "Done with installing packages."
