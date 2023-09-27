@@ -77,6 +77,11 @@ sudo colcon build
 source install/setup.bash
 #
 echo "Booting all nodes..."
+# Boot camera
+sudo chmod 755 $ROS_CAMERA_BOOT_DIR/ros_camera_boot.sh
+sudo chmod 755 $ROS_CAMERA_BOOT_DIR/ros_camera_boot.service
+sudo mv $ROS_CAMERA_BOOT_DIR/ros_camera_boot.service /etc/systemd/system
+sudo systemctl enable ros_camera_boot.service
 # Boot motors
 sudo chmod 755 $ROS_MOTORS_BOOT_DIR/ros_motors_boot.sh
 sudo chmod 755 $ROS_MOTORS_BOOT_DIR/ros_motors_boot.service
