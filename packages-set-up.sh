@@ -73,6 +73,7 @@ rm -r $ROS_WORKING_DIR/voice-assistant-PR-312
 #
 # build all packages
 cd $ROS_WORKING_DIR
+sudo chmod -R 777 $ROS_WORKING_DIR
 sudo colcon build
 source install/setup.bash
 #
