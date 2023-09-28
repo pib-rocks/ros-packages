@@ -50,7 +50,7 @@ echo "Installing motors..."
 pip3.10 install tinkerforge
 sudo apt-get install libusb-1.0-0-dev
 #
-# Downloading files for voice-assistant
+# Downloading files for motors
 curl $ROS_MOTORS_NODE_LINK -L --output $ROS_WORKING_DIR/$ROS_MOTORS_NODE_ZIP
 sudo unzip $ROS_WORKING_DIR/$ROS_MOTORS_NODE_ZIP -d $ROS_WORKING_DIR
 sudo chmod -R 777 $ROS_WORKING_DIR/motors-PR-312
@@ -75,7 +75,6 @@ rm -r $ROS_WORKING_DIR/voice-assistant-PR-312
 cd $ROS_WORKING_DIR
 sudo chmod -R 777 $ROS_WORKING_DIR
 sudo colcon build
-source install/setup.bash
 #
 echo "Booting all nodes..."
 # Boot camera
