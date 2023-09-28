@@ -93,6 +93,11 @@ sudo chmod 755 $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.service
 sudo mv $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.service /etc/systemd/system
 sudo systemctl enable ros_voice_assistant_boot.service
 #
+# Clean-up: remove unnecessary .zip directories
+rm -r oak_d_lite.zip
+rm -r motors.zip
+rm -r voice_assistant.zip
+#
 echo "source /home/pib/ros_working_dir/install/setup.bash" >> ~/.bashrc
 #
 echo "Done with installing packages."
