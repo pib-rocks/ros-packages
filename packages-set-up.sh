@@ -8,7 +8,7 @@ DEFAULT_USER="pib"
 USER_HOME="/home/$DEFAULT_USER"
 ROS_WORKING_DIR="$USER_HOME/ros_working_dir"
 #
-ROS_CAMERA_NODE_LINK="https://github.com/Lisa-isento/ros2_oak_d_lite/archive/refs/heads/PR-312.zip"
+ROS_CAMERA_NODE_LINK="https://github.com/pib-rocks/ros2_oak_d_lite/archive/refs/heads/PR-312.zip"
 ROS_CAMERA_NODE_DIR="$ROS_WORKING_DIR/src/oak_d_lite"
 ROS_CAMERA_NODE_ZIP="oak_d_lite.zip"
 ROS_CAMERA_BOOT_DIR="$ROS_CAMERA_NODE_DIR/boot_scripts"
