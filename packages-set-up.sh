@@ -8,21 +8,6 @@ DEFAULT_USER="pib"
 USER_HOME="/home/$DEFAULT_USER"
 ROS_WORKING_DIR="$USER_HOME/ros_working_dir"
 #
-ROS_CAMERA_NODE_LINK="https://github.com/pib-rocks/ros2_oak_d_lite/archive/refs/heads/PR-312.zip"
-ROS_CAMERA_NODE_DIR="$ROS_WORKING_DIR/src/oak_d_lite"
-ROS_CAMERA_NODE_ZIP="oak_d_lite.zip"
-ROS_CAMERA_BOOT_DIR="$ROS_CAMERA_NODE_DIR/boot_scripts"
-#
-ROS_MOTORS_NODE_LINK="https://github.com/pib-rocks/motors/archive/refs/heads/PR-312.zip"
-ROS_MOTORS_NODE_DIR="$ROS_WORKING_DIR/src/motors"
-ROS_MOTORS_NODE_ZIP="motors.zip"
-ROS_MOTORS_BOOT_DIR="$ROS_MOTORS_NODE_DIR/boot_scripts"
-#
-ROS_VOICE_ASSISTANT_NODE_LINK="https://github.com/pib-rocks/voice-assistant/archive/refs/heads/PR-312.zip"
-ROS_VOICE_ASSISTANT_NODE_DIR="$ROS_WORKING_DIR/src/voice_assistant"
-ROS_VOICE_ASSISTANT_NODE_ZIP="voice_assistant.zip"
-ROS_VOICE_ASSISTANT_BOOT_DIR="$ROS_VOICE_ASSISTANT_NODE_DIR/boot_scripts"
-#
 echo "Installing ros2_oak_d_lite..."
 # Setting up the camera, including AI capabilities
 # Depth-AI
