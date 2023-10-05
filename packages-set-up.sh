@@ -8,17 +8,17 @@ DEFAULT_USER="pib"
 USER_HOME="/home/$DEFAULT_USER"
 ROS_WORKING_DIR="$USER_HOME/ros_working_dir"
 #
-ROS_CAMERA_NODE_LINK="https://github.com/pib-rocks/ros2_oak_d_lite/archive/refs/heads/PR-312.zip"
+ROS_CAMERA_NODE_LINK="https://github.com/pib-rocks/ros2_oak_d_lite/archive/refs/heads/master.zip"
 ROS_CAMERA_NODE_DIR="$ROS_WORKING_DIR/src/oak_d_lite"
 ROS_CAMERA_NODE_ZIP="oak_d_lite.zip"
 ROS_CAMERA_BOOT_DIR="$ROS_CAMERA_NODE_DIR/boot_scripts"
 #
-ROS_MOTORS_NODE_LINK="https://github.com/pib-rocks/motors/archive/refs/heads/PR-312.zip"
+ROS_MOTORS_NODE_LINK="https://github.com/pib-rocks/motors/archive/refs/heads/main.zip"
 ROS_MOTORS_NODE_DIR="$ROS_WORKING_DIR/src/motors"
 ROS_MOTORS_NODE_ZIP="motors.zip"
 ROS_MOTORS_BOOT_DIR="$ROS_MOTORS_NODE_DIR/boot_scripts"
 #
-ROS_VOICE_ASSISTANT_NODE_LINK="https://github.com/pib-rocks/voice-assistant/archive/refs/heads/PR-312.zip"
+ROS_VOICE_ASSISTANT_NODE_LINK="https://github.com/pib-rocks/voice-assistant/archive/refs/heads/main.zip"
 ROS_VOICE_ASSISTANT_NODE_DIR="$ROS_WORKING_DIR/src/voice_assistant"
 ROS_VOICE_ASSISTANT_NODE_ZIP="voice_assistant.zip"
 ROS_VOICE_ASSISTANT_BOOT_DIR="$ROS_VOICE_ASSISTANT_NODE_DIR/boot_scripts"
@@ -40,10 +40,10 @@ pip install -r requirements.txt
 # Downloading files for camera
 curl $ROS_CAMERA_NODE_LINK -L --output $ROS_WORKING_DIR/$ROS_CAMERA_NODE_ZIP
 sudo unzip $ROS_WORKING_DIR/$ROS_CAMERA_NODE_ZIP -d $ROS_WORKING_DIR
-sudo chmod -R 777 $ROS_WORKING_DIR/ros2_oak_d_lite-PR-312
+sudo chmod -R 777 $ROS_WORKING_DIR/ros2_oak_d_lite-master
 mkdir $ROS_CAMERA_NODE_DIR
-mv $ROS_WORKING_DIR/ros2_oak_d_lite-PR-312/*  $ROS_CAMERA_NODE_DIR
-rm -r $ROS_WORKING_DIR/ros2_oak_d_lite-PR-312
+mv $ROS_WORKING_DIR/ros2_oak_d_lite-master/*  $ROS_CAMERA_NODE_DIR
+rm -r $ROS_WORKING_DIR/ros2_oak_d_lite-master
 #
 echo "Installing motors..."
 # Setting up the motor packages
@@ -53,10 +53,10 @@ sudo apt-get install libusb-1.0-0-dev
 # Downloading files for motors
 curl $ROS_MOTORS_NODE_LINK -L --output $ROS_WORKING_DIR/$ROS_MOTORS_NODE_ZIP
 sudo unzip $ROS_WORKING_DIR/$ROS_MOTORS_NODE_ZIP -d $ROS_WORKING_DIR
-sudo chmod -R 777 $ROS_WORKING_DIR/motors-PR-312
+sudo chmod -R 777 $ROS_WORKING_DIR/motors-main
 mkdir $ROS_MOTORS_NODE_DIR
-mv $ROS_WORKING_DIR/motors-PR-312/*  $ROS_MOTORS_NODE_DIR
-rm -r $ROS_WORKING_DIR/motors-PR-312
+mv $ROS_WORKING_DIR/motors-main/*  $ROS_MOTORS_NODE_DIR
+rm -r $ROS_WORKING_DIR/motors-main
 #
 echo "Installing voice-assistant..."
 # Setting up the voice-assistant packages
@@ -66,10 +66,10 @@ sudo apt-get install flac
 # Downloading files for voice-assistant
 curl $ROS_VOICE_ASSISTANT_NODE_LINK -L --output $ROS_WORKING_DIR/$ROS_VOICE_ASSISTANT_NODE_ZIP
 sudo unzip $ROS_WORKING_DIR/$ROS_VOICE_ASSISTANT_NODE_ZIP -d $ROS_WORKING_DIR
-sudo chmod -R 777 $ROS_WORKING_DIR/voice-assistant-PR-312
+sudo chmod -R 777 $ROS_WORKING_DIR/voice-assistant-main
 mkdir $ROS_VOICE_ASSISTANT_NODE_DIR
-mv $ROS_WORKING_DIR/voice-assistant-PR-312/*  $ROS_VOICE_ASSISTANT_NODE_DIR
-rm -r $ROS_WORKING_DIR/voice-assistant-PR-312
+mv $ROS_WORKING_DIR/voice-assistant-main/*  $ROS_VOICE_ASSISTANT_NODE_DIR
+rm -r $ROS_WORKING_DIR/voice-assistant-main
 #
 # build all packages
 cd $ROS_WORKING_DIR
