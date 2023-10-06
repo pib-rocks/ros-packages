@@ -8,26 +8,16 @@ DEFAULT_USER="pib"
 USER_HOME="/home/$DEFAULT_USER"
 ROS_WORKING_DIR="$USER_HOME/ros_working_dir"
 #
-ROS_CAMERA_NODE_LINK="https://github.com/pib-rocks/ros2_oak_d_lite/archive/refs/heads/master.zip"
-ROS_CAMERA_NODE_DIR="$ROS_WORKING_DIR/src/oak_d_lite"
-ROS_CAMERA_NODE_ZIP="oak_d_lite.zip"
-ROS_CAMERA_BOOT_DIR="$ROS_CAMERA_NODE_DIR/boot_scripts"
-#
-ROS_MOTORS_NODE_LINK="https://github.com/pib-rocks/motors/archive/refs/heads/main.zip"
-ROS_MOTORS_NODE_DIR="$ROS_WORKING_DIR/src/motors"
-ROS_MOTORS_NODE_ZIP="motors.zip"
-ROS_MOTORS_BOOT_DIR="$ROS_MOTORS_NODE_DIR/boot_scripts"
-#
-ROS_VOICE_ASSISTANT_NODE_LINK="https://github.com/pib-rocks/voice-assistant/archive/refs/heads/main.zip"
-ROS_VOICE_ASSISTANT_NODE_DIR="$ROS_WORKING_DIR/src/voice_assistant"
-ROS_VOICE_ASSISTANT_NODE_ZIP="voice_assistant.zip"
-ROS_VOICE_ASSISTANT_BOOT_DIR="$ROS_VOICE_ASSISTANT_NODE_DIR/boot_scripts"
-#
-echo "Installing ros2_oak_d_lite..."
-# Setting up the camera, including AI capabilities
+# Installing dependencies
 # Depth-AI
 sudo curl -sSL https://docs.luxonis.com/install_dependencies.sh | sudo bash
 python3 -m pip install depthai
+# Setting up the motor packages
+pip3.10 install tinkerforge
+sudo apt-get install libusb-1.0-0-dev
+# Setting up the voice-assistant packages
+pip3.10 install openai google-cloud-speech google-cloud-texttospeech pyaudio
+sudo apt-get install flac
 #Git examples for Depth-AI
 git clone --recurse-submodules https://github.com/luxonis/depthai-python.git
 cd depthai-python/examples
@@ -37,67 +27,16 @@ git clone https://github.com/geaxgx/depthai_hand_tracker.git
 cd depthai_hand_tracker
 pip install -r requirements.txt
 #
-# Downloading files for camera
-curl $ROS_CAMERA_NODE_LINK -L --output $ROS_WORKING_DIR/$ROS_CAMERA_NODE_ZIP
-sudo unzip $ROS_WORKING_DIR/$ROS_CAMERA_NODE_ZIP -d $ROS_WORKING_DIR
-sudo chmod -R 777 $ROS_WORKING_DIR/ros2_oak_d_lite-master
-mkdir $ROS_CAMERA_NODE_DIR
-mv $ROS_WORKING_DIR/ros2_oak_d_lite-master/*  $ROS_CAMERA_NODE_DIR
-rm -r $ROS_WORKING_DIR/ros2_oak_d_lite-master
-#
-echo "Installing motors..."
-# Setting up the motor packages
-pip3.10 install tinkerforge
-sudo apt-get install libusb-1.0-0-dev
-#
-# Downloading files for motors
-curl $ROS_MOTORS_NODE_LINK -L --output $ROS_WORKING_DIR/$ROS_MOTORS_NODE_ZIP
-sudo unzip $ROS_WORKING_DIR/$ROS_MOTORS_NODE_ZIP -d $ROS_WORKING_DIR
-sudo chmod -R 777 $ROS_WORKING_DIR/motors-main
-mkdir $ROS_MOTORS_NODE_DIR
-mv $ROS_WORKING_DIR/motors-main/*  $ROS_MOTORS_NODE_DIR
-rm -r $ROS_WORKING_DIR/motors-main
-#
-echo "Installing voice-assistant..."
-# Setting up the voice-assistant packages
-pip3.10 install openai google-cloud-speech google-cloud-texttospeech pyaudio
-sudo apt-get install flac
-#
-# Downloading files for voice-assistant
-curl $ROS_VOICE_ASSISTANT_NODE_LINK -L --output $ROS_WORKING_DIR/$ROS_VOICE_ASSISTANT_NODE_ZIP
-sudo unzip $ROS_WORKING_DIR/$ROS_VOICE_ASSISTANT_NODE_ZIP -d $ROS_WORKING_DIR
-sudo chmod -R 777 $ROS_WORKING_DIR/voice-assistant-main
-mkdir $ROS_VOICE_ASSISTANT_NODE_DIR
-mv $ROS_WORKING_DIR/voice-assistant-main/*  $ROS_VOICE_ASSISTANT_NODE_DIR
-rm -r $ROS_WORKING_DIR/voice-assistant-main
-#
-# build all packages
-cd $ROS_WORKING_DIR
-sudo chmod -R 777 $ROS_WORKING_DIR
-sudo colcon build
-#
-echo "Booting all nodes..."
-# Boot camera
-sudo chmod 755 $ROS_CAMERA_BOOT_DIR/ros_camera_boot.sh
-sudo chmod 755 $ROS_CAMERA_BOOT_DIR/ros_camera_boot.service
-sudo mv $ROS_CAMERA_BOOT_DIR/ros_camera_boot.service /etc/systemd/system
-sudo systemctl enable ros_camera_boot.service
-# Boot motors
-sudo chmod 755 $ROS_MOTORS_BOOT_DIR/ros_motors_boot.sh
-sudo chmod 755 $ROS_MOTORS_BOOT_DIR/ros_motors_boot.service
-sudo mv $ROS_MOTORS_BOOT_DIR/ros_motors_boot.service /etc/systemd/system
-sudo systemctl enable ros_motors_boot.service
-# Boot voice-assistant
-sudo chmod 755 $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.sh
-sudo chmod 755 $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.service
-sudo mv $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.service /etc/systemd/system
-sudo systemctl enable ros_voice_assistant_boot.service
-#
-# Clean-up: remove unnecessary .zip directories
-rm -r oak_d_lite.zip
-rm -r motors.zip
-rm -r voice_assistant.zip
-#
-echo "source /home/pib/ros_working_dir/install/setup.bash" >> ~/.bashrc
-#
-echo "Done with installing packages."
+#check on git
+echo 'check if git init is done'
+cd $ROS_WORKING_DIR/src
+if [ ! -f .git ]; then
+	git init
+fi
+#git pull packages with sub modules
+echo 'git pull packages with sub modules'
+git pull https://github.com/pib-rocks/ros-packages.git
+chmod +x package_set_up.sh
+git submodule init
+git submodule update
+echo 'Done with installing packages'
