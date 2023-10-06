@@ -8,8 +8,7 @@ DEFAULT_USER="pib"
 USER_HOME="/home/$DEFAULT_USER"
 ROS_WORKING_DIR="$USER_HOME/ros_working_dir"
 #
-echo "Installing ros2_oak_d_lite..."
-# Setting up the camera, including AI capabilities
+# Installing dependencies
 # Depth-AI
 sudo curl -sSL https://docs.luxonis.com/install_dependencies.sh | sudo bash
 python3 -m pip install depthai
@@ -34,10 +33,10 @@ cd $ROS_WORKING_DIR/src
 if [ ! -f .git ]; then
 	git init
 fi
-
 #git pull packages with sub modules
 echo 'git pull packages with sub modules'
 git pull https://github.com/pib-rocks/ros-packages.git
 chmod +x package_set_up.sh
 git submodule init
 git submodule update
+echo 'Done with installing packages'
