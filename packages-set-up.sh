@@ -40,3 +40,20 @@ chmod +x package_set_up.sh
 git submodule init
 git submodule update
 echo 'Done with installing packages'
+#
+echo "Booting all nodes..."
+# Boot camera
+sudo chmod 755 $ROS_CAMERA_BOOT_DIR/ros_camera_boot.sh
+sudo chmod 755 $ROS_CAMERA_BOOT_DIR/ros_camera_boot.service
+sudo mv $ROS_CAMERA_BOOT_DIR/ros_camera_boot.service /etc/systemd/system
+sudo systemctl enable ros_camera_boot.service
+# Boot motors
+sudo chmod 755 $ROS_MOTORS_BOOT_DIR/ros_motors_boot.sh
+sudo chmod 755 $ROS_MOTORS_BOOT_DIR/ros_motors_boot.service
+sudo mv $ROS_MOTORS_BOOT_DIR/ros_motors_boot.service /etc/systemd/system
+sudo systemctl enable ros_motors_boot.service
+# Boot voice-assistant
+sudo chmod 755 $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.sh
+sudo chmod 755 $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.service
+sudo mv $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.service /etc/systemd/system
+sudo systemctl enable ros_voice_assistant_boot.service
