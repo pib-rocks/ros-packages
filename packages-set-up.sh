@@ -38,7 +38,7 @@ echo 'git pull packages with sub modules'
 git pull https://github.com/pib-rocks/ros-packages.git
 chmod +x package_set_up.sh
 git submodule init
-git submodule update
+git submodule update --remote
 echo 'Done with installing packages'
 #
 echo "Booting all nodes..."
