@@ -57,3 +57,6 @@ sudo chmod 755 $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.sh
 sudo chmod 755 $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.service
 sudo mv $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.service /etc/systemd/system
 sudo systemctl enable ros_voice_assistant_boot.service
+
+cd $ROS_WORKING_DIR
+colcon build
