@@ -7,6 +7,9 @@
 DEFAULT_USER="pib"
 USER_HOME="/home/$DEFAULT_USER"
 ROS_WORKING_DIR="$USER_HOME/ros_working_dir"
+ROS_CAMERA_BOOT_DIR="$ROS_WORKING_DIR"/src/ros2_oak_d_lite/boot_scripts
+ROS_MOTORS_BOOT_DIR="$ROS_WORKING_DIR"/src/motors/boot_scripts
+ROS_VOICE_ASSISTANT_BOOT_DIR="$ROS_WORKING_DIR"/src/voice-assistant/boot_scripts
 #
 # Installing dependencies
 # Depth-AI
