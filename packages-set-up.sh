@@ -50,11 +50,19 @@ sudo chmod 755 $ROS_CAMERA_BOOT_DIR/ros_camera_boot.sh
 sudo chmod 755 $ROS_CAMERA_BOOT_DIR/ros_camera_boot.service
 sudo mv $ROS_CAMERA_BOOT_DIR/ros_camera_boot.service /etc/systemd/system
 sudo systemctl enable ros_camera_boot.service
-# Boot motors
-sudo chmod 755 $ROS_MOTORS_BOOT_DIR/ros_motors_boot.sh
-sudo chmod 755 $ROS_MOTORS_BOOT_DIR/ros_motors_boot.service
-sudo mv $ROS_MOTORS_BOOT_DIR/ros_motors_boot.service /etc/systemd/system
-sudo systemctl enable ros_motors_boot.service
+
+# Boot motor control node
+sudo chmod 755 $ROS_MOTORS_BOOT_DIR/ros_motor_control_node_boot.sh
+sudo chmod 755 $ROS_MOTORS_BOOT_DIR/ros_motor_control_node_boot.service
+sudo mv $ROS_MOTORS_BOOT_DIR/ros_motor_control_node_boot.service /etc/systemd/system
+sudo systemctl enable ros_motor_control_node_boot.service
+
+# Boot motor current node
+sudo chmod 755 $ROS_MOTORS_BOOT_DIR/ros_motor_current_node_boot.sh
+sudo chmod 755 $ROS_MOTORS_BOOT_DIR/ros_motor_current_node_boot.service
+sudo mv $ROS_MOTORS_BOOT_DIR/ros_motor_current_node_boot.service /etc/systemd/system
+sudo systemctl enable ros_motor_current_node_boot.service
+
 # Boot voice-assistant
 sudo chmod 755 $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.sh
 sudo chmod 755 $ROS_VOICE_ASSISTANT_BOOT_DIR/ros_voice_assistant_boot.service
