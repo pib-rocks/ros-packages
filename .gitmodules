@@ -13,4 +13,4 @@
 [submodule "ros2_oak_d_lite"]
 	path = ros2_oak_d_lite
 	url = https://github.com/pib-rocks/ros2_oak_d_lite.git
-	branch = master
+	branch = main
