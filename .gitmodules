@@ -17,3 +17,4 @@
 [submodule "programs"]
 	path = programs
 	url = https://github.com/pib-rocks/programs
+	branch = main
